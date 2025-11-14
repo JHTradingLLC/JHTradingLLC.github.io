@@ -33,32 +33,45 @@
     .tag{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #2a2a2a;background:#0c0c0c;border-radius:999px;padding:.35rem .7rem;color:#d4d4d8;font-size:.85rem}
     .highlight{color:#34d399}
     .notice{background:#0d1f1a;border:1px solid #1f3c32}
-    /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 12px;
-      }
-      
-      ::-webkit-scrollbar-track {
-        background: var(--bg);
-      }
-      
-      ::-webkit-scrollbar-thumb {
-        background: #2a2a2a;
-        border-radius: 6px;
-        border: 2px solid var(--bg);
-      }
-      
-      ::-webkit-scrollbar-thumb:hover {
-        background: #3a3a3a;
-      }
-      
-      /* Firefox */
-      * {
-        scrollbar-width: thin;
-        scrollbar-color: #2a2a2a var(--bg);
-      }
-
     
+    /* NAV LINKS (added) */
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:1rem;
+      font-size:.9rem;
+    }
+    .nav-links a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:.25rem .45rem;
+      border-radius:.4rem;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      background:#111827;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2a2a2a;
+      border-radius: 6px;
+      border: 2px solid var(--bg);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3a3a3a;
+    }
+    /* Firefox */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #2a2a2a var(--bg);
+    }
   </style>
 </head>
 <body>
@@ -66,39 +79,47 @@
   <header class="nav">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;">
       <div style="display:flex;align-items:center;gap:.6rem">
-        <img src="logo.png" alt="Logo" class="logo" /> <strong>1-on-1 Trading Mentorship</strong>
+        <img src="logo.png" alt="Logo" class="logo" /> 
+        <strong>1-on-1 Trading Mentorship</strong>
       </div>
+
+      <!-- NEW NAV LINKS -->
+      <nav class="nav-links">
+        <a href="#included">What’s included</a>
+        <a href="#pricing">Pricing</a>
+        <a href="products.html">Other products</a>
+      </nav>
     </div>
   </header>
 
-<!-- HERO -->
-<section style="position:relative; overflow:hidden;">
-  <div class="hero-bg"></div>
-  <div class="container" style="padding:80px 1rem; position:relative; z-index:1;">
-    <div class="row row-2" style="align-items:center;">
-      <div>
-        <span class="tag">Personalized mentorship</span>
-        <h1 class="h1">
-          I’m super excited to finally share what you’ll get when joining my 
-          <span class="highlight">1-on-1 trading mentorship</span>!
-        </h1>
+  <!-- HERO -->
+  <section style="position:relative; overflow:hidden;">
+    <div class="hero-bg"></div>
+    <div class="container" style="padding:80px 1rem; position:relative; z-index:1;">
+      <div class="row row-2" style="align-items:center;">
+        <div>
+          <span class="tag">Personalized mentorship</span>
+          <h1 class="h1">
+            I’m super excited to finally share what you’ll get when joining my 
+            <span class="highlight">1-on-1 trading mentorship</span>!
+          </h1>
 
-        <p class="muted" style="max-width:65ch">
-          Let’s see what we can accomplish together.
-        </p>
+          <p class="muted" style="max-width:65ch">
+            Let’s see what we can accomplish together.
+          </p>
 
-        <div style="margin-top:1rem;">
-          <!-- Apply now → scrolls down to pricing section -->
-          <a class="btn btn-brand" href="#pricing">Apply now</a>
+          <div style="margin-top:1rem;">
+            <!-- Apply now → scrolls down to pricing section -->
+            <a class="btn btn-brand" href="#pricing">Apply now</a>
+          </div>
+
+          <div class="muted" style="margin-top:.5rem; font-size:.85rem;">
+            Spots are limited. 
+            <strong class="highlight" id="dynamicSpots">
+              Only a limited number of spots available!
+            </strong>
+          </div>
         </div>
-
-        <div class="muted" style="margin-top:.5rem; font-size:.85rem;">
-          Spots are limited. 
-          <strong class="highlight" id="dynamicSpots">
-            Only a limited number of spots available!
-          </strong>
-        </div>
-      </div>
 
         <div class="card">
           <div class="muted" style="font-size:.95rem">What we focus on</div>
@@ -184,17 +205,15 @@
         </ul>
 
         <a class="btn btn-brand"
-         href="https://whop.com/checkout/plan_zI8z54a4tqQGL?d2c=true"
-         target="_blank" rel="noopener">Start monthly</a>
+           href="https://whop.com/checkout/plan_zI8z54a4tqQGL?d2c=true"
+           target="_blank" rel="noopener">Start monthly</a>
       
-      <div style="margin-top:.75rem;">
-        <a href="#disclaimer" 
-           style="font-style:italic; text-decoration:underline; color:var(--muted); font-size:.9rem;">
-           Read disclaimer
-        </a>
-      </div>
-
-
+        <div style="margin-top:.75rem;">
+          <a href="#disclaimer" 
+             style="font-style:italic; text-decoration:underline; color:var(--muted); font-size:.9rem;">
+             Read disclaimer
+          </a>
+        </div>
       </div>
 
       <div id="availability" class="card notice" style="margin-top:1rem">
@@ -204,49 +223,48 @@
     </div>
   </section>
 
-
-<!-- DISCLAIMER -->
-<section id="disclaimer" style="border-top:1px solid #1a1a1a;">
-  <div class="container" style="padding:60px 1rem;">
-    <h2 class="h2">Disclaimer</h2>
-    <p class="muted" style="max-width:75ch;">
-      By purchasing and participating in this mentorship program, you acknowledge and agree to the following:
-    </p>
-
-    <div class="card" style="margin-top:1rem; line-height:1.7;">
-      <p class="muted">
-        <strong>No Guarantees of Results:</strong>
-        The mentor does not guarantee any specific results, financial outcomes, or success.
-        Your results depend on your own effort, commitment, and circumstances.
+  <!-- DISCLAIMER -->
+  <section id="disclaimer" style="border-top:1px solid #1a1a1a;">
+    <div class="container" style="padding:60px 1rem;">
+      <h2 class="h2">Disclaimer</h2>
+      <p class="muted" style="max-width:75ch;">
+        By purchasing and participating in this mentorship program, you acknowledge and agree to the following:
       </p>
 
-      <br>
+      <div class="card" style="margin-top:1rem; line-height:1.7;">
+        <p class="muted">
+          <strong>No Guarantees of Results:</strong>
+          The mentor does not guarantee any specific results, financial outcomes, or success.
+          Your results depend on your own effort, commitment, and circumstances.
+        </p>
 
-      <p class="muted">
-        <strong>Educational Purposes Only:</strong>
-        All information, strategies, and guidance provided during the mentorship are for educational and informational purposes only.
-        Nothing shared should be interpreted as professional, financial, legal, medical, or psychological advice.
-      </p>
+        <br>
 
-      <br>
+        <p class="muted">
+          <strong>Educational Purposes Only:</strong>
+          All information, strategies, and guidance provided during the mentorship are for educational and informational purposes only.
+          Nothing shared should be interpreted as professional, financial, legal, medical, or psychological advice.
+        </p>
 
-      <p class="muted">
-        <strong>Personal Responsibility:</strong>
-        You are solely responsible for the decisions, actions, and results that come from your participation.
-        The mentor is not liable for any damages, losses, or consequences resulting from the application of information provided.
-      </p>
+        <br>
 
-      <br>
+        <p class="muted">
+          <strong>Personal Responsibility:</strong>
+          You are solely responsible for the decisions, actions, and results that come from your participation.
+          The mentor is not liable for any damages, losses, or consequences resulting from the application of information provided.
+        </p>
 
-      <p class="muted">
-        <strong>No Professional Relationship:</strong>
-        Participation in this mentorship does not create a client–professional relationship
-        (e.g., financial advisor, therapist, lawyer, etc.).
-        It is a peer-guidance and educational service.
-      </p>
+        <br>
+
+        <p class="muted">
+          <strong>No Professional Relationship:</strong>
+          Participation in this mentorship does not create a client–professional relationship
+          (e.g., financial advisor, therapist, lawyer, etc.).
+          It is a peer-guidance and educational service.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- FOOTER -->
   <footer class="footer">
