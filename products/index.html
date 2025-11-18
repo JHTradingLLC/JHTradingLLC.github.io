@@ -87,11 +87,26 @@
       list-style:disc;
     }
 
+    /* Thumbnail for cards */
+    .product-thumb{
+      width:100%;
+      max-height:180px;
+      overflow:hidden;
+      border-radius:.75rem;
+      margin-bottom:.75rem;
+    }
+    .product-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
     /* Alignment across cards on larger screens */
     @media(min-width:768px){
-      .product-desc{ min-height:52px; }   /* keep descriptions similar height */
-      .product-price{ min-height:32px; }  /* align price rows */
-      .product-list{ min-height:96px; }   /* align bullet list blocks */
+      .product-desc{ min-height:52px; }
+      .product-price{ min-height:32px; }
+      .product-list{ min-height:96px; }
     }
 
     /* Custom Scrollbar */
@@ -150,7 +165,6 @@
       font-size:1.25rem;
       font-weight:700;
     }
-    /* Clean X icon, no black box */
     .modal-close{
       border:none;
       background:transparent !important;
@@ -172,16 +186,13 @@
   <header class="nav">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;">
       <div style="display:flex;align-items:center;gap:.6rem">
-        <!-- go one level up to site root -->
         <a href="../" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;">
           <img src="../logo.png" alt="Logo" class="logo" />
           <strong>JHTradingLLC</strong>
         </a>
       </div>
       <nav class="nav-links">
-        <!-- back to homepage -->
         <a href="../">Mentorship</a>
-        <!-- current page -->
         <a href="./" style="color:var(--text);background:#111827;">Other products</a>
       </nav>
     </div>
@@ -226,8 +237,14 @@
               A personal mentorship experience with weekly calls, group accountability and direct access to me.
             </p>
 
-            <div class="product-price">
-              $350 / month
+            <!-- Updated pricing block -->
+            <div>
+              <div class="product-price">
+                $350 / month
+              </div>
+              <div class="muted" style="font-size:.8rem;margin-top:.1rem;">
+                or $900 / 3 months · $1,800 / 6 months
+              </div>
             </div>
 
             <ul class="product-list">
@@ -235,10 +252,10 @@
               <li>Weekly private group call + tests</li>
               <li>Custom 0–100 risk plan</li>
               <li>High-priority DM access</li>
+              <li>JH-Trading's OTE Zones indicator included at no extra cost while you’re in the mentorship</li>
             </ul>
           </div>
 
-          <!-- bottom row: non-refundable + small button -->
           <div style="display:flex;align-items:center;gap:.75rem;margin-top:1rem;justify-content:flex-end;">
             <div style="font-size:.75rem; color:#9ca3af; text-decoration:underline;">
               This purchase is non-refundable
@@ -259,7 +276,7 @@
             </div>
 
             <p class="product-desc">
-              A clean and lightweight tool for marking OTE zones and the session midline.
+              OTE indicator – A clean and lightweight tool for marking OTE zones and the 50% of the session.
             </p>
 
             <div class="product-price">
@@ -268,12 +285,11 @@
 
             <ul class="product-list">
               <li>Automatically draws OTE zones for the active range</li>
-              <li>Shows the session midline in real-time</li>
+              <li>Shows the 50% level of the current session in real-time</li>
               <li>Easy to use</li>
             </ul>
           </div>
 
-          <!-- bottom row -->
           <div style="display:flex;align-items:center;gap:.75rem;margin-top:1rem;justify-content:flex-end;">
             <div style="font-size:.75rem; color:#9ca3af; text-decoration:underline;">
               This purchase is non-refundable
@@ -286,7 +302,7 @@
           </div>
         </div>
 
-        <!-- 1-on-1 Call (Standalone) - Coming Soon -->
+        <!-- 1-on-1 Call (Standalone) -->
         <div class="card product-card">
           <div class="card-body">
             <div class="product-title">
@@ -297,8 +313,14 @@
               A single private call without joining the full mentorship. Ideal for quick help or specific questions.
             </p>
 
-            <div class="product-price coming">
-              Coming Soon
+            <!-- UPDATED PRICE BLOCK -->
+            <div>
+              <div class="product-price">
+                $50 / 30 min
+              </div>
+              <div class="muted" style="font-size:.8rem;margin-top:.1rem;">
+                One-time session, no ongoing commitment
+              </div>
             </div>
 
             <ul class="product-list">
@@ -308,14 +330,14 @@
             </ul>
           </div>
 
-          <!-- bottom row -->
           <div style="display:flex;align-items:center;gap:.75rem;margin-top:1rem;justify-content:flex-end;">
             <div style="font-size:.75rem; color:#9ca3af; text-decoration:underline;">
               This purchase is non-refundable
             </div>
-            <button class="btn"
-                    style="padding:.55rem .9rem;font-size:.85rem;background:#2a2a2a; color:#777; cursor:not-allowed;">
-              Soon
+            <button class="btn btn-brand"
+                    style="padding:.55rem .9rem;font-size:.85rem;"
+                    onclick="openModal('callModal')">
+              View &rarr;
             </button>
           </div>
         </div>
@@ -352,9 +374,19 @@
           <li>Weekly private group call with tests and feedback</li>
           <li>Custom 0–100 risk management plan to scale safely</li>
           <li>Priority DM access for questions, screenshots and breakdowns</li>
+          <li>JH-Trading's OTE Zones indicator included at no extra cost while you’re in the mentorship</li>
         </ul>
 
-        <!-- footer row with non-refundable + buttons -->
+        <!-- pricing options inside modal -->
+        <div style="border-top:1px solid #1f2937;padding-top:1rem;margin-top:.75rem;">
+          <div style="font-weight:600;margin-bottom:.35rem;">Pricing options</div>
+          <ul class="muted" style="font-size:.9rem;line-height:1.6;margin:0 0 1rem 1.1rem;">
+            <li><strong>$350.00 / month</strong> – flexible monthly plan, cancel anytime</li>
+            <li><strong>$900.00 / 3 months</strong> – commit for 3 months and save on the monthly rate</li>
+            <li><strong>$1,800.00 / 6 months</strong> – long-term commitment for serious traders</li>
+          </ul>
+        </div>
+
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;flex-wrap:wrap;gap:.75rem;">
           <div style="font-size:.75rem; color:#9ca3af; text-decoration:underline;">
             This purchase is non-refundable
@@ -385,15 +417,14 @@
           <button class="modal-close" onclick="closeModal('indicatorModal')">&times;</button>
         </div>
         <p class="muted" style="font-size:.95rem;margin-bottom:1rem;">
-          A clean and lightweight indicator that highlights JH-Trading's OTE zones and the midline of the active session.
+          OTE indicator – a clean and lightweight indicator that highlights JH-Trading's OTE zones and the 50% of the session.
         </p>
         <ul class="muted" style="font-size:.9rem;line-height:1.6;margin-bottom:1rem;">
           <li>Automatically draws OTE zones for the active range</li>
-          <li>Shows the session midline in real-time</li>
+          <li>Shows the 50% level of the current session in real-time</li>
           <li>Easy to use</li>
         </ul>
 
-        <!-- footer row with non-refundable + buttons -->
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;flex-wrap:wrap;gap:.75rem;">
           <div style="font-size:.75rem; color:#9ca3af; text-decoration:underline;">
             This purchase is non-refundable
@@ -411,8 +442,53 @@
     </div>
   </div>
 
+  <!-- 1-on-1 Call Modal -->
+  <div id="callModal" class="modal-backdrop" onclick="backdropClick(event, 'callModal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-img-top">
+        <img src="discord.png" alt="1-on-1 Call preview">
+      </div>
+      <div class="modal-inner">
+        <div class="modal-header">
+          <div class="modal-title">1-on-1 Call (Standalone)</div>
+          <button class="modal-close" onclick="closeModal('callModal')">&times;</button>
+        </div>
+
+        <p class="muted" style="font-size:.95rem;margin-bottom:.75rem;">
+          Book a single 30-minute private call without joining the full mentorship. Perfect if you need quick feedback on
+          your trades, help with psychology, or a second pair of eyes on your progress.
+        </p>
+
+        <!-- PRICE LINE -->
+        <div style="font-weight:600;margin-bottom:.5rem;">
+          $50 / 30-minute call
+        </div>
+
+        <ul class="muted" style="font-size:.9rem;line-height:1.6;margin-bottom:1rem;">
+          <li>30-minute private call focused on your questions</li>
+          <li>We can review trades, routines, mindset or risk</li>
+          <li>One-time session with no ongoing commitment</li>
+        </ul>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:.5rem;flex-wrap:wrap;gap:.75rem;">
+          <div style="font-size:.75rem; color:#9ca3af; text-decoration:underline;">
+            This purchase is non-refundable
+          </div>
+
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:flex-end;">
+            <button class="btn btn-ghost" onclick="closeModal('callModal')">Close</button>
+            <a class="btn btn-brand"
+               href="https://whop.com/jhtrading/private-1-on-1-call/"
+               target="_blank" rel="noopener">
+              Go to checkout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // Update year
     document.getElementById('y').textContent = new Date().getFullYear();
 
     function openModal(id){
