@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JT7EPJF2SG"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -9,9 +9,10 @@
     gtag('js', new Date());
     gtag('config', 'G-JT7EPJF2SG');
   </script>
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>1-on-1 Trading Mentorship</title>
+  <title>1-on-1 Trading Mentorship – JHTradingLLC</title>
   <link rel="icon" type="image/png" href="logo_website.png" />
     
   <style>
@@ -20,11 +21,12 @@
     body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 1rem}
-    .nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;background:rgba(10,10,10,.72)}
+    .nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;background:rgba(10,10,10,.82)}
     .row{display:grid;gap:1rem}
     @media(min-width:768px){.row-2{grid-template-columns:1fr 1fr}.row-3{grid-template-columns:repeat(3,1fr)}}
-    .btn{display:inline-block;padding:.7rem 1.05rem;border-radius:.8rem;font-weight:700;text-align:center}
+    .btn{display:inline-block;padding:.7rem 1.05rem;border-radius:.8rem;font-weight:700;text-align:center;cursor:pointer}
     .btn-brand{background:var(--brand);color:#0a0a0a}
+    .btn-brand:hover{filter:brightness(1.08);}
     .card{background:rgba(18,18,18,.9);border:1px solid var(--line);border-radius:1rem;padding:1.1rem}
     .muted{color:var(--muted)}
     .h1{font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin:.25rem 0 .75rem}
@@ -43,7 +45,25 @@
     .highlight{color:#34d399}
     .notice{background:#0d1f1a;border:1px solid #1f3c32}
     
-    /* NAV LINKS (added) */
+    /* NAV LINKS – unified across all pages */
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.9rem 1rem;
+    }
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .nav-brand{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      text-decoration:none;
+      font-weight:700;
+    }
     .nav-links{
       display:flex;
       align-items:center;
@@ -53,36 +73,30 @@
     .nav-links a{
       color:var(--muted);
       text-decoration:none;
-      padding:.25rem .45rem;
-      border-radius:.4rem;
+      padding:.25rem .7rem;
+      border-radius:.6rem;
     }
     .nav-links a:hover{
       color:var(--text);
       background:#111827;
     }
+    .nav-links a.active{
+      color:var(--text);
+      background:#111827;
+    }
 
     /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 12px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--bg);
-    }
+    ::-webkit-scrollbar { width: 12px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb {
       background: #2a2a2a;
       border-radius: 6px;
       border: 2px solid var(--bg);
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3a3a3a;
-    }
-    /* Firefox */
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: #2a2a2a var(--bg);
-    }
+    ::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
+    * { scrollbar-width: thin; scrollbar-color: #2a2a2a var(--bg); }
 
-    /* BLACK FRIDAY BANNER (same style as products) */
+    /* BLACK FRIDAY BANNER (same as products page) */
     .blackfriday-banner{
       background:radial-gradient(circle at top, rgba(34,197,94,.25), transparent 55%), #020617;
       border-bottom:1px solid #22c55e;
@@ -136,18 +150,19 @@
   </style>
 </head>
 <body>
-  <!-- NAV -->
+  <!-- NAV (Unified) -->
   <header class="nav">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;">
-      <div style="display:flex;align-items:center;gap:.6rem">
-        <img src="logo.png" alt="Logo" class="logo" /> 
-        <strong>1-on-1 Trading Mentorship</strong>
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a href="./" class="nav-brand">
+          <img src="logo.png" alt="Logo" class="logo" />
+          <span>JHTradingLLC</span>
+        </a>
       </div>
-
       <nav class="nav-links">
-        <a href="#included">What’s included</a>
-        <a href="#pricing">Pricing</a>
-        <a href="products/">Other products</a>
+        <a href="./" class="active">Mentorship</a>
+        <a href="products/">Products</a>
+        <a href="freeSection/">Free Discord</a>
       </nav>
     </div>
   </header>
@@ -180,7 +195,6 @@
           </p>
 
           <div style="margin-top:1rem;">
-            <!-- Apply now → scrolls down to pricing section -->
             <a class="btn btn-brand" href="#pricing">Apply now</a>
           </div>
 
@@ -208,8 +222,12 @@
               <div>Weekly private call + tests</div>
             </div>
             <div class="card" style="background:none;border:none;padding:0">
-              <div class="muted" style="font-size:.85rem">Risk plan (0-100)</div>
+              <div class="muted" style="font-size:.85rem">Risk plan (0–100)</div>
               <div>Dial-in size, profits & payouts</div>
+            </div>
+            <div class="card" style="background:none;border:none;padding:0">
+              <div class="muted" style="font-size:.85rem">NY PM livestreams</div>
+              <div>Mon–Fri, 1:30–3:00 PM – live market work</div>
             </div>
             <div class="card" style="background:none;border:none;padding:0">
               <div class="muted" style="font-size:.85rem">Priority DM</div>
@@ -227,31 +245,38 @@
       <h2 class="h2">What’s Included</h2>
       <div class="row row-2" style="margin-top:1rem">
         <div class="card">
-          <div class="h3"> Weekly 1-on-1 Call (30 min)</div>
+          <div class="h3">Weekly 1-on-1 Call (30 min)</div>
           <p class="muted">Tailored to the topics of your choice, with clear steps for improvement each week.</p>
         </div>
 
         <div class="card">
-          <div class="h3"> Personalized Concept Guide</div>
+          <div class="h3">Personalized Concept Guide</div>
           <p class="muted">A custom guide built around your background and experience in trading.</p>
         </div>
 
         <div class="card">
-          <div class="h3"> Weekly Group Call & Progress Tests</div>
-          <p class="muted">Join a private group call each week with tests to track your growth and performance.</p>
+          <div class="h3">Weekly Group Call & Progress Tests</div>
+          <p class="muted">Private group call each week with tests to track your growth and performance.</p>
         </div>
 
         <div class="card">
-          <div class="h3"> Custom Risk Management Plan (0–100)</div>
+          <div class="h3">Custom Risk Management Plan (0–100)</div>
           <p class="muted">Designed to help you scale safely and aim for higher consistency and payouts.</p>
         </div>
 
         <div class="card">
-          <div class="h3"> 24/7 DM Access</div>
+          <div class="h3">NY PM Livestreams (Mon–Fri)</div>
+          <p class="muted">
+            Live trading sessions during the PM session, Monday to Friday, roughly <strong>1:30 PM – 3:00 PM</strong>.
+            Watch execution, reasoning and management in real time.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="h3">24/7 DM Access</div>
           <p class="muted">Ask anything, anytime — I’ll respond as fast as I can with actionable advice.</p>
         </div>
 
-        <!-- NEW: indicator included -->
         <div class="card">
           <div class="h3">JH-Trading's OTE Indicator</div>
           <p class="muted">
@@ -292,7 +317,7 @@
         </ul>
 
         <p class="muted" style="font-size:.9rem;margin-top:.5rem;">
-          All options include weekly 1-on-1 calls, group accountability, 0–100 risk plan and priority DM access.
+          All options include weekly 1-on-1 calls, group accountability, NY PM livestreams, a 0–100 risk plan and priority DM access.
         </p>
 
         <a class="btn btn-brand"
@@ -350,8 +375,7 @@
         <p class="muted">
           <strong>No Professional Relationship:</strong>
           Participation in this mentorship does not create a client–professional relationship
-          (e.g., financial advisor, therapist, lawyer, etc.).
-          It is a peer-guidance and educational service.
+          (e.g., financial advisor, therapist, lawyer, etc.). It is a peer-guidance and educational service.
         </p>
       </div>
     </div>
@@ -365,7 +389,6 @@
   </footer>
 
   <script>
-    // Update year
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
