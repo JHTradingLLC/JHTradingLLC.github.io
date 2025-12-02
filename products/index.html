@@ -13,7 +13,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Products – JHTradingLLC</title>
-  <link rel="icon" type="image/png" href="/logo_website.png" />
+  <link rel="icon" type="image/png" href="../logo_website.png" />
   <style>
     :root { --bg:#0a0a0a; --card:#121212; --muted:#a1a1aa; --line:#1f2937; --brand:#10b981; --text:#e5e7eb; }
     *{box-sizing:border-box;scroll-behavior:smooth;}
@@ -21,13 +21,14 @@
     body.modal-open {overflow: hidden;height: 100vh;} 
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 1rem}
-    .nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;background:rgba(10,10,10,.72)}
+    .nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;background:rgba(10,10,10,.82)}
     .row{display:grid;gap:1rem}
     @media(min-width:768px){
       .row-2{grid-template-columns:1fr 1fr}
     }
     .btn{display:inline-block;padding:.7rem 1.05rem;border-radius:.8rem;font-weight:700;text-align:center;cursor:pointer}
     .btn-brand{background:var(--brand);color:#0a0a0a}
+    .btn-brand:hover{filter:brightness(1.08);}
     .btn-ghost{
       background:transparent;
       border:1px solid var(--line);
@@ -35,6 +36,7 @@
       padding:.6rem 1rem;
       border-radius:.8rem;
       font-weight:600;
+      cursor:pointer;
     }
     .btn-ghost:hover{
       background:#111827;
@@ -57,9 +59,44 @@
     .tag{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #2a2a2a;background:#0c0c0c;border-radius:999px;padding:.35rem .7rem;color:#d4d4d8;font-size:.85rem}
     .highlight{color:#34d399}
 
-    .nav-links{display:flex;gap:1rem;font-size:.9rem}
-    .nav-links a{color:var(--muted);text-decoration:none;padding:.25rem .4rem;border-radius:.4rem}
-    .nav-links a:hover{color:var(--text);background:#111827;}
+    /* NAV LINKS – unified */
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:.9rem 1rem;
+    }
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .nav-brand{
+      display:flex;
+      align-items:center;
+      gap:.5rem;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .nav-links{
+      display:flex;
+      gap:1rem;
+      font-size:.9rem;
+    }
+    .nav-links a{
+      color:var(--muted);
+      text-decoration:none;
+      padding:.25rem .7rem;
+      border-radius:.6rem;
+    }
+    .nav-links a:hover{
+      color:var(--text);
+      background:#111827;
+    }
+    .nav-links a.active{
+      color:var(--text);
+      background:#111827;
+    }
 
     /* Product card layout */
     .product-card{
@@ -97,21 +134,6 @@
       list-style:disc;
     }
 
-    /* Thumbnail (if you ever add it back) */
-    .product-thumb{
-      width:100%;
-      max-height:180px;
-      overflow:hidden;
-      border-radius:.75rem;
-      margin-bottom:.75rem;
-    }
-    .product-thumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
     /* Alignment across cards on larger screens */
     @media(min-width:768px){
       .product-desc{ min-height:52px; }
@@ -140,10 +162,8 @@
       justify-content:center;
       z-index:50;
       padding:1rem;
-      overflow-y: auto;
+      overflow-y:auto;
     }
-
-    /* UPDATED: make modal fit viewport & scroll if needed */
     .modal{
       max-width:480px;
       width:100%;
@@ -168,13 +188,10 @@
       height:100%;
       object-fit:cover;
     }
-
-    /* UPDATED: inner scroll area */
     .modal-inner{
       padding:1.5rem;
       overflow-y:auto;
     }
-
     .modal-header{
       display:flex;
       justify-content:space-between;
@@ -200,15 +217,9 @@
       background:transparent !important;
       color:var(--text);
     }
-
-    /* EXTRA: on very small screens, shrink image a bit more */
     @media (max-height:700px){
-      .modal-img-top{
-        max-height:160px;
-      }
-      .modal-inner{
-        padding:1.25rem;
-      }
+      .modal-img-top{ max-height:160px; }
+      .modal-inner{ padding:1.25rem; }
     }
 
     /* BLACK FRIDAY BANNER */
@@ -265,18 +276,19 @@
   </style>
 </head>
 <body>
-  <!-- NAV -->
+  <!-- NAV (Unified) -->
   <header class="nav">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;">
-      <div style="display:flex;align-items:center;gap:.6rem">
-        <a href="../" style="display:flex;align-items:center;gap:.5rem;text-decoration:none;">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a href="../" class="nav-brand">
           <img src="../logo.png" alt="Logo" class="logo" />
-          <strong>JHTradingLLC</strong>
+          <span>JHTradingLLC</span>
         </a>
       </div>
       <nav class="nav-links">
         <a href="../">Mentorship</a>
-        <a href="./" style="color:var(--text);background:#111827;">Other products</a>
+        <a href="./" class="active">Products</a>
+        <a href="../freeSection/">Free Discord</a>
       </nav>
     </div>
   </header>
@@ -287,8 +299,7 @@
       <div class="blackfriday-pill">Black Friday</div>
       <div class="blackfriday-text">
         This month only: <strong>1-on-1 Trading Mentorship</strong> first month
-        from <span class="price-old">$350</span><span class="price-new">$250</span>.
-        No code needed. Limited spots.
+        from <span class="price-old">$350</span><span class="price-new">$250</span>. No code needed. Limited spots.
       </div>
     </div>
   </div>
@@ -305,7 +316,7 @@
             <span class="highlight">current trading journey</span>.
           </h1>
           <p class="muted" style="max-width:65ch">
-            Whether you want full 1-on-1 guidance or just the tools to support your own strategy, you’ll find it here.
+             Whether you want full 1-on-1 guidance or just the tools to support your own strategy, you’ll find it here.
           </p>
         </div>
       </div>
@@ -329,7 +340,7 @@
             </div>
 
             <p class="product-desc">
-              A personal mentorship experience with weekly calls, group accountability and direct access to me.
+              A personal mentorship experience with weekly calls, NY PM livestreams, group accountability and direct access to me.
             </p>
 
             <div>
@@ -345,6 +356,7 @@
             <ul class="product-list">
               <li>Weekly 30-min 1-on-1 call</li>
               <li>Weekly private group call + tests</li>
+              <li>NY PM livestreams (Mon–Fri, ~1:30–3:00 PM)</li>
               <li>Custom 0–100 risk plan</li>
               <li>High-priority DM access</li>
               <li>JH-Trading's OTE Zones indicator included at no extra cost while you’re in the mentorship</li>
@@ -371,7 +383,7 @@
             </div>
 
             <p class="product-desc">
-              OTE indicator – A clean and lightweight tool for marking OTE zones and the 50% of the session.
+              OTE indicator – a clean and lightweight tool for marking OTE zones and the 50% of the session.
             </p>
 
             <div class="product-price">
@@ -460,12 +472,13 @@
           <button class="modal-close" onclick="closeModal('mentorshipModal')">&times;</button>
         </div>
         <p class="muted" style="font-size:.95rem;margin-bottom:1rem;">
-          Get full access to my trading framework with weekly 1-on-1 calls, group accountability and 24/7 priority DM.
+          Get full access to my trading framework with weekly 1-on-1 calls, NY PM livestreams, group accountability and 24/7 priority DM.
           We adapt the mentorship to your level, time and goals so you can focus on execution instead of guessing.
         </p>
         <ul class="muted" style="font-size:.9rem;line-height:1.6;margin-bottom:1rem;">
           <li>Weekly 30-minute 1-on-1 call tailored to your topics</li>
           <li>Weekly private group call with tests and feedback</li>
+          <li>NY PM livestreams (Monday–Friday, ~1:30–3:00 PM)</li>
           <li>Custom 0–100 risk management plan to scale safely</li>
           <li>Priority DM access for questions, screenshots and breakdowns</li>
           <li>JH-Trading's OTE Zones indicator included at no extra cost while you’re in the mentorship</li>
@@ -587,47 +600,43 @@
   </div>
 
   <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-  function openModal(id){
-    var el = document.getElementById(id);
-    if (el) {
-      el.style.display = 'flex';
-      // Lock background scroll
-      document.body.classList.add('modal-open');
-    }
-  }
-
-  function closeModal(id){
-    var el = document.getElementById(id);
-    if (el) {
-      el.style.display = 'none';
+    function openModal(id){
+      var el = document.getElementById(id);
+      if (el) {
+        el.style.display = 'flex';
+        document.body.classList.add('modal-open');
+      }
     }
 
-    // If no modal is visible anymore, unlock background scroll
-    var anyOpen = document.querySelector('.modal-backdrop[style*="display: flex"]');
-    if (!anyOpen) {
-      document.body.classList.remove('modal-open');
+    function closeModal(id){
+      var el = document.getElementById(id);
+      if (el) {
+        el.style.display = 'none';
+      }
+      var anyOpen = document.querySelector('.modal-backdrop[style*="display: flex"]');
+      if (!anyOpen) {
+        document.body.classList.remove('modal-open');
+      }
     }
-  }
 
-  function backdropClick(event, id){
-    if (event.target.id === id) {
-      closeModal(id);
+    function backdropClick(event, id){
+      if (event.target.id === id) {
+        closeModal(id);
+      }
     }
-  }
 
-  // Optional: close all modals on Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.modal-backdrop').forEach(function (el) {
-        if (el.style.display === 'flex') {
-          el.style.display = 'none';
-        }
-      });
-      document.body.classList.remove('modal-open');
-    }
-  });
-</script>
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-backdrop').forEach(function (el) {
+          if (el.style.display === 'flex') {
+            el.style.display = 'none';
+          }
+        });
+        document.body.classList.remove('modal-open');
+      }
+    });
+  </script>
 </body>
 </html>
