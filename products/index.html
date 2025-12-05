@@ -134,7 +134,6 @@
       list-style:disc;
     }
 
-    /* Alignment across cards on larger screens */
     @media(min-width:768px){
       .product-desc{ min-height:52px; }
       .product-price{ min-height:32px; }
@@ -221,58 +220,6 @@
       .modal-img-top{ max-height:160px; }
       .modal-inner{ padding:1.25rem; }
     }
-
-    /* BLACK FRIDAY BANNER */
-    .blackfriday-banner{
-      background:radial-gradient(circle at top, rgba(34,197,94,.25), transparent 55%), #020617;
-      border-bottom:1px solid #22c55e;
-      padding:.75rem 1rem;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
-      font-size:.9rem;
-    }
-    .blackfriday-inner{
-      max-width:1100px;
-      width:100%;
-      margin:0 auto;
-      display:flex;
-      flex-wrap:wrap;
-      gap:.5rem;
-      justify-content:center;
-      align-items:center;
-    }
-    .blackfriday-pill{
-      padding:.25rem .7rem;
-      border-radius:999px;
-      background:#22c55e;
-      color:#022c22;
-      font-weight:800;
-      font-size:.8rem;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      animation:blackfridayPulse 1.6s infinite ease-in-out;
-    }
-    .blackfriday-text{
-      color:#e5e7eb;
-    }
-    .blackfriday-text strong{
-      color:#bbf7d0;
-    }
-    .price-old{
-      text-decoration:line-through;
-      opacity:.6;
-      margin-right:.25rem;
-    }
-    .price-new{
-      color:#22c55e;
-      font-weight:800;
-    }
-    @keyframes blackfridayPulse{
-      0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(34,197,94,.45);}
-      50%{transform:scale(1.03);box-shadow:0 0 25px 0 rgba(34,197,94,.55);}
-    }
   </style>
 </head>
 <body>
@@ -292,17 +239,6 @@
       </nav>
     </div>
   </header>
-
-  <!-- BLACK FRIDAY BANNER -->
-  <div class="blackfriday-banner">
-    <div class="blackfriday-inner">
-      <div class="blackfriday-pill">Black Friday</div>
-      <div class="blackfriday-text">
-        This month only: <strong>1-on-1 Trading Mentorship</strong> first month
-        from <span class="price-old">$350</span><span class="price-new">$250</span>. No code needed. Limited spots.
-      </div>
-    </div>
-  </div>
 
   <!-- HERO / INTRO -->
   <section style="position:relative; overflow:hidden;">
@@ -345,10 +281,9 @@
 
             <div>
               <div class="product-price">
-                <span class="price-old">$350</span><span class="price-new">$250</span> / month
+                $350 / month
               </div>
               <div class="muted" style="font-size:.8rem;margin-top:.1rem;">
-                Black Friday: <strong>$250</strong> for your first month (then $350 / month).<br>
                 Or $900 / 3 months · $1,750 / 6 months.
               </div>
             </div>
@@ -487,13 +422,7 @@
         <div style="border-top:1px solid #1f2937;padding-top:1rem;margin-top:.75rem;">
           <div style="font-weight:600;margin-bottom:.35rem;">Pricing options</div>
           <ul class="muted" style="font-size:.9rem;line-height:1.6;margin:0 0 1rem 1.1rem;">
-            <li>
-              <strong>
-                <span class="price-old">$350.00</span>
-                <span class="price-new">$250.00</span> / month
-              </strong>
-              – Black Friday: first month $250, then $350, cancel anytime
-            </li>
+            <li><strong>$350.00 / month</strong> – flexible monthly plan, cancel anytime</li>
             <li><strong>$900.00 / 3 months</strong> – commit for 3 months and save on the monthly rate</li>
             <li><strong>$1,750.00 / 6 months</strong> – best value: $350 off (= 1 month free!)</li>
           </ul>
