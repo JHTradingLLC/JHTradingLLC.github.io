@@ -132,6 +132,7 @@
       color:#bbf7d0;
       text-transform:uppercase;
       letter-spacing:.06em;
+      flex-wrap:wrap;
     }
     .comparison-list{
       margin:.4rem 0 0;
@@ -140,9 +141,60 @@
       line-height:1.6;
       color:var(--muted);
     }
+
+    /* ===== Snow canvas overlay (added) ===== */
+    #snowCanvas{
+      position:fixed;
+      inset:0;
+      z-index:40;
+      pointer-events:none;
+      opacity:.95;
+    }
+    @media (prefers-reduced-motion: reduce){
+      #snowCanvas{ display:none; }
+    }
+
+    /* ===== Christmas sale price styling (added) ===== */
+    .sale-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.75rem;
+      padding:.25rem .6rem;
+      border-radius:999px;
+      border:1px solid rgba(239,68,68,.35);
+      background:rgba(239,68,68,.12);
+      color:#fecaca;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .sale-price{
+      display:inline-flex;
+      align-items:baseline;
+      gap:.5rem;
+      flex-wrap:wrap;
+    }
+    .old-price{
+      color:#9ca3af;
+      text-decoration:line-through;
+      text-decoration-thickness:2px;
+      opacity:.9;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .new-price{
+      color:#34d399;
+      font-weight:900;
+      text-shadow:0 0 18px rgba(16,185,129,.25);
+      white-space:nowrap;
+    }
   </style>
 </head>
 <body>
+  <!-- Snowfall canvas (added) -->
+  <canvas id="snowCanvas" aria-hidden="true"></canvas>
+
   <!-- NAV -->
   <header class="nav">
     <div class="container nav-inner">
@@ -176,7 +228,6 @@
             resonates with you before ever joining the mentorship.
           </p>
 
-          <!-- Discord button (you can add UTM if you want: ?utm_source=website&utm_medium=button&utm_campaign=free_discord) -->
           <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;">
             <a
               class="btn btn-brand"
@@ -241,7 +292,14 @@
             1-on-1 Trading Mentorship
           </div>
           <div class="comparison-badge" style="border-color:#22c55e;background:#16a34a;">
-            <span>Paid – from $350 / month</span>
+            <span>Paid –</span>
+            <span class="sale-price">
+              <span>from</span>
+              <span class="old-price">$350</span>
+              <span class="new-price">$250</span>
+              <span>/ month</span>
+            </span>
+            <span class="sale-badge">🎄 Christmas Deal</span>
           </div>
           <ul class="comparison-list">
             <li>Weekly 30-min <strong>1-on-1 call</strong> focused on you</li>
@@ -270,6 +328,77 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <script>
+    // ===== Snowfall (canvas) (added) =====
+    (function () {
+      var canvas = document.getElementById("snowCanvas");
+      if (!canvas) return;
+
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) return;
+
+      var ctx = canvas.getContext("2d");
+      var w = 0, h = 0;
+      var flakes = [];
+      var MAX_FLAKES = 140;
+
+      function resize(){
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resize, { passive:true });
+      resize();
+
+      function rand(min, max){ return Math.random() * (max - min) + min; }
+
+      function makeFlake(){
+        return {
+          x: rand(0, w),
+          y: rand(-h, 0),
+          r: rand(0.8, 2.4),
+          s: rand(0.6, 1.6),
+          dx: rand(-0.4, 0.4),
+          a: rand(0.35, 0.9)
+        };
+      }
+
+      for (var i = 0; i < MAX_FLAKES; i++) flakes.push(makeFlake());
+
+      function step(){
+        ctx.clearRect(0, 0, w, h);
+
+        for (var i = 0; i < flakes.length; i++){
+          var f = flakes[i];
+
+          ctx.beginPath();
+          ctx.globalAlpha = f.a;
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.fill();
+
+          f.y += f.s;
+          f.x += f.dx;
+
+          f.dx += rand(-0.03, 0.03);
+          if (f.dx > 0.7) f.dx = 0.7;
+          if (f.dx < -0.7) f.dx = -0.7;
+
+          if (f.y - f.r > h){
+            flakes[i] = makeFlake();
+            flakes[i].y = rand(-40, -10);
+          }
+          if (f.x < -10) f.x = w + 10;
+          if (f.x > w + 10) f.x = -10;
+        }
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(step);
+      }
+
+      step();
+    })();
   </script>
 </body>
 </html>
