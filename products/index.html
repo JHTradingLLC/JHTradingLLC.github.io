@@ -221,11 +221,11 @@
       .modal-inner{ padding:1.25rem; }
     }
 
-    /* ===== Snow canvas overlay (added) ===== */
+    /* ===== Snow canvas overlay ===== */
     #snowCanvas{
       position:fixed;
       inset:0;
-      z-index:40;
+      z-index:9999;
       pointer-events:none;
       opacity:.95;
     }
@@ -233,7 +233,7 @@
       #snowCanvas{ display:none; }
     }
 
-    /* ===== Christmas sale price styling (added) ===== */
+    /* ===== Christmas sale price styling ===== */
     .sale-badge{
       display:inline-flex;
       align-items:center;
@@ -247,6 +247,11 @@
       letter-spacing:.06em;
       text-transform:uppercase;
       font-weight:800;
+    }
+    .sale-note{
+      color:#9ca3af;
+      font-size:.8rem;
+      margin-top:.25rem;
     }
     .sale-price{
       display:inline-flex;
@@ -271,10 +276,9 @@
   </style>
 </head>
 <body>
-  <!-- Snowfall canvas (added) -->
   <canvas id="snowCanvas" aria-hidden="true"></canvas>
 
-  <!-- NAV (Unified) -->
+  <!-- NAV -->
   <header class="nav">
     <div class="container nav-inner">
       <div class="nav-left">
@@ -291,7 +295,7 @@
     </div>
   </header>
 
-  <!-- HERO / INTRO -->
+  <!-- HERO -->
   <section style="position:relative; overflow:hidden;">
     <div class="hero-bg"></div>
     <div class="container" style="padding:70px 1rem 40px; position:relative; z-index:1;">
@@ -319,7 +323,7 @@
       </p>
 
       <div class="row row-2" style="margin-top:1.5rem;">
-        <!-- Mentorship product card -->
+        <!-- Mentorship -->
         <div class="card product-card">
           <div class="card-body">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
@@ -328,7 +332,7 @@
             </div>
 
             <p class="product-desc">
-              A personal mentorship experience with weekly calls, NY PM livestreams, group accountability and direct access to me.
+              A personal mentorship experience with weekly calls, NY lunch livestreams, group accountability and direct access to me.
             </p>
 
             <div>
@@ -339,7 +343,10 @@
                   <span>/ month</span>
                 </span>
               </div>
-              <div class="muted" style="font-size:.8rem;margin-top:.1rem;">
+              <div class="sale-note">
+                Christmas Deal applies to the <strong>first month only</strong>, then $350/month.
+              </div>
+              <div class="muted" style="font-size:.8rem;margin-top:.15rem;">
                 Or $900 / 3 months · $1,750 / 6 months.
               </div>
             </div>
@@ -347,7 +354,7 @@
             <ul class="product-list">
               <li>Weekly 30-min 1-on-1 call</li>
               <li>Weekly private group call + tests</li>
-              <li>NY PM livestreams (Mon–Fri, ~1:30–3:00 PM)</li>
+              <li>NY lunch livestreams (Mon–Fri, ~1:30–3:00 PM)</li>
               <li>Custom 0–100 risk plan</li>
               <li>High-priority DM access</li>
               <li>JH-Trading's OTE Zones indicator included at no extra cost while you’re in the mentorship</li>
@@ -366,7 +373,7 @@
           </div>
         </div>
 
-        <!-- Indicator product card -->
+        <!-- Indicator -->
         <div class="card product-card">
           <div class="card-body">
             <div class="product-title">
@@ -400,7 +407,7 @@
           </div>
         </div>
 
-        <!-- 1-on-1 Call (Standalone) -->
+        <!-- 1-on-1 Call -->
         <div class="card product-card">
           <div class="card-body">
             <div class="product-title">
@@ -463,13 +470,13 @@
           <button class="modal-close" onclick="closeModal('mentorshipModal')">&times;</button>
         </div>
         <p class="muted" style="font-size:.95rem;margin-bottom:1rem;">
-          Get full access to my trading framework with weekly 1-on-1 calls, NY PM livestreams, group accountability and 24/7 priority DM.
+          Get full access to my trading framework with weekly 1-on-1 calls, NY lunch livestreams, group accountability and 24/7 priority DM.
           We adapt the mentorship to your level, time and goals so you can focus on execution instead of guessing.
         </p>
         <ul class="muted" style="font-size:.9rem;line-height:1.6;margin-bottom:1rem;">
           <li>Weekly 30-minute 1-on-1 call tailored to your topics</li>
           <li>Weekly private group call with tests and feedback</li>
-          <li>NY PM livestreams (Monday–Friday, ~1:30–3:00 PM)</li>
+          <li>NY lunch livestreams (Monday–Friday, ~1:30–3:00 PM)</li>
           <li>Custom 0–100 risk management plan to scale safely</li>
           <li>Priority DM access for questions, screenshots and breakdowns</li>
           <li>JH-Trading's OTE Zones indicator included at no extra cost while you’re in the mentorship</li>
@@ -480,6 +487,9 @@
             <div style="font-weight:600;margin-bottom:.35rem;">Pricing options</div>
             <div class="sale-badge">🎄 Christmas Deal</div>
           </div>
+          <div class="sale-note" style="margin:0 0 .6rem 0;">
+            Christmas Deal applies to the <strong>first month only</strong>, then $350/month.
+          </div>
           <ul class="muted" style="font-size:.9rem;line-height:1.6;margin:0 0 1rem 1.1rem;">
             <li>
               <strong>
@@ -487,7 +497,7 @@
                 <span class="new-price">$250.00</span>
                 / month
               </strong>
-              – flexible monthly plan, cancel anytime
+              – first month only (Christmas Deal), then $350.00/month. Cancel anytime.
             </li>
             <li><strong>$900.00 / 3 months</strong> – commit for 3 months and save on the monthly rate</li>
             <li><strong>$1,750.00 / 6 months</strong> – best value: $350 off (= 1 month free!)</li>
@@ -635,7 +645,7 @@
   </script>
 
   <script>
-    // ===== Snowfall (canvas) (added) =====
+    // ===== Snowfall (canvas) =====
     (function () {
       var canvas = document.getElementById("snowCanvas");
       if (!canvas) return;
