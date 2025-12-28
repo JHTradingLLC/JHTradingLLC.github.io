@@ -290,5 +290,78 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+ <script>
+    // ===== Snowfall (canvas) =====
+    (function () {
+      var canvas = document.getElementById("snowCanvas");
+      if (!canvas) return;
+
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) return;
+
+      var ctx = canvas.getContext("2d");
+      var w = 0, h = 0;
+      var flakes = [];
+      var MAX_FLAKES = 140;
+
+      function resize(){
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resize, { passive:true });
+      resize();
+
+      function rand(min, max){ return Math.random() * (max - min) + min; }
+
+      function makeFlake(){
+        return {
+          x: rand(0, w),
+          y: rand(-h, 0),
+          r: rand(0.8, 2.4),
+          s: rand(0.6, 1.6),
+          dx: rand(-0.4, 0.4),
+          a: rand(0.35, 0.9)
+        };
+      }
+
+      for (var i = 0; i < MAX_FLAKES; i++) flakes.push(makeFlake());
+
+      function step(){
+        ctx.clearRect(0, 0, w, h);
+
+        for (var i = 0; i < flakes.length; i++){
+          var f = flakes[i];
+
+          ctx.beginPath();
+          ctx.globalAlpha = f.a;
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.fill();
+
+          f.y += f.s;
+          f.x += f.dx;
+
+          f.dx += rand(-0.03, 0.03);
+          if (f.dx > 0.7) f.dx = 0.7;
+          if (f.dx < -0.7) f.dx = -0.7;
+
+          if (f.y - f.r > h){
+            flakes[i] = makeFlake();
+            flakes[i].y = rand(-40, -10);
+          }
+          if (f.x < -10) f.x = w + 10;
+          if (f.x > w + 10) f.x = -10;
+        }
+
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(step);
+      }
+
+      step();
+    })();
+  </script>
+
+  
 </body>
 </html>
+
