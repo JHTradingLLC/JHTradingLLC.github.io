@@ -54,7 +54,7 @@
     .tag{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #2a2a2a;background:#0c0c0c;border-radius:999px;padding:.35rem .7rem;color:#d4d4d8;font-size:.85rem}
     .highlight{color:#34d399}
 
-    /* NAV LINKS – unified */
+    /* NAV LINKS */
     .nav-inner{
       display:flex;
       align-items:center;
@@ -142,11 +142,11 @@
       color:var(--muted);
     }
 
-    /* ===== Snow canvas overlay (added) ===== */
+    /* ===== Snow canvas overlay ===== */
     #snowCanvas{
       position:fixed;
       inset:0;
-      z-index:40;
+      z-index:9999;
       pointer-events:none;
       opacity:.95;
     }
@@ -154,7 +154,7 @@
       #snowCanvas{ display:none; }
     }
 
-    /* ===== Christmas sale price styling (added) ===== */
+    /* ===== Christmas deal styling ===== */
     .sale-badge{
       display:inline-flex;
       align-items:center;
@@ -168,6 +168,15 @@
       letter-spacing:.06em;
       text-transform:uppercase;
       font-weight:800;
+    }
+    .sale-note{
+      color:#e5e7eb;
+      opacity:.9;
+      font-size:.75rem;
+      margin-left:.35rem;
+      text-transform:none;
+      letter-spacing:0;
+      font-weight:700;
     }
     .sale-price{
       display:inline-flex;
@@ -192,7 +201,6 @@
   </style>
 </head>
 <body>
-  <!-- Snowfall canvas (added) -->
   <canvas id="snowCanvas" aria-hidden="true"></canvas>
 
   <!-- NAV -->
@@ -259,7 +267,7 @@
     </div>
   </section>
 
-  <!-- FREE vs MENTORSHIP COMPARISON -->
+  <!-- FREE vs MENTORSHIP -->
   <section style="border-top:1px solid #1a1a1a;">
     <div class="container" style="padding:50px 1rem 70px;">
       <h2 class="h2">Free vs Mentorship</h2>
@@ -300,10 +308,11 @@
               <span>/ month</span>
             </span>
             <span class="sale-badge">🎄 Christmas Deal</span>
+            <span class="sale-note">(first month only)</span>
           </div>
           <ul class="comparison-list">
             <li>Weekly 30-min <strong>1-on-1 call</strong> focused on you</li>
-            <li><strong>NY PM livestreams</strong> Mon–Fri (~1:30–3:00 PM)</li>
+            <li><strong>NY lunch livestreams</strong> Mon–Fri (~1:30–3:00 PM)</li>
             <li>Weekly private group call + tests & accountability</li>
             <li>Custom <strong>0–100 risk management plan</strong></li>
             <li>24/7 high-priority DM access for breakdowns & questions</li>
@@ -331,7 +340,7 @@
   </script>
 
   <script>
-    // ===== Snowfall (canvas) (added) =====
+    // ===== Snowfall (canvas) =====
     (function () {
       var canvas = document.getElementById("snowCanvas");
       if (!canvas) return;
