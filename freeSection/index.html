@@ -105,6 +105,18 @@
     ::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
     * { scrollbar-width: thin; scrollbar-color: #2a2a2a var(--bg); }
 
+    /* ===== Snow canvas overlay (FIX) ===== */
+    #snowCanvas{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      pointer-events:none;
+      opacity:.95;
+    }
+    @media (prefers-reduced-motion: reduce){
+      #snowCanvas{ display:none; }
+    }
+
     /* Comparison section */
     .comparison-grid{
       display:grid;
@@ -154,6 +166,9 @@
   </style>
 </head>
 <body>
+  <!-- ✅ Snow canvas element (FIX) -->
+  <canvas id="snowCanvas" aria-hidden="true"></canvas>
+
   <!-- NAV -->
   <header class="nav">
     <div class="container nav-inner">
@@ -187,7 +202,7 @@
             resonates with you before ever joining the mentorship.
           </p>
 
-          <!-- Discord button (you can add UTM if you want: ?utm_source=website&utm_medium=button&utm_campaign=free_discord) -->
+          <!-- Discord button -->
           <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;">
             <a
               class="btn btn-brand"
@@ -290,7 +305,8 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
- <script>
+
+  <script>
     // ===== Snowfall (canvas) =====
     (function () {
       var canvas = document.getElementById("snowCanvas");
@@ -360,8 +376,5 @@
       step();
     })();
   </script>
-
-  
 </body>
 </html>
-
