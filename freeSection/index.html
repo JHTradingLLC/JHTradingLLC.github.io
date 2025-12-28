@@ -16,417 +16,285 @@
   <link rel="icon" type="image/png" href="../logo_website.png" />
 
   <style>
-    :root { --bg:#0a0a0a; --card:#121212; --muted:#a1a1aa; --line:#1f2937; --brand:#10b981; --text:#e5e7eb; }
+    :root {
+      --bg:#0a0a0a;
+      --card:#121212;
+      --muted:#a1a1aa;
+      --line:#1f2937;
+      --brand:#10b981;
+      --text:#e5e7eb;
+    }
+
     *{box-sizing:border-box;scroll-behavior:smooth;}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+    }
+
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 1rem}
-    .nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;background:rgba(10,10,10,.82)}
-    .row{display:grid;gap:1rem}
-    @media(min-width:768px){.row-2{grid-template-columns:1.2fr 1fr}}
 
-    .btn{display:inline-block;padding:.7rem 1.05rem;border-radius:.8rem;font-weight:700;text-align:center;cursor:pointer}
-    .btn-brand{background:var(--brand);color:#0a0a0a}
-    .btn-brand:hover{filter:brightness(1.08);}
-    .btn-ghost{
-      background:transparent;
-      border:1px solid var(--line);
-      color:var(--muted);
-      padding:.6rem 1rem;
-      border-radius:.8rem;
-      font-weight:600;
-      cursor:pointer;
+    /* NAV */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:30;
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid var(--line);
+      background:rgba(10,10,10,.82);
     }
-    .card{background:rgba(18,18,18,.9);border:1px solid var(--line);border-radius:1rem;padding:1.1rem}
-    .muted{color:var(--muted)}
-    .h1{font-size:clamp(2rem,4vw,2.6rem);line-height:1.15;margin:.25rem 0 .75rem}
-    .h2{font-size:1.45rem;font-weight:800;margin:0 0 .5rem}
-    .footer{border-top:1px solid #1a1a1a;background:rgba(10,10,10,.85)}
-    .hero-bg{
-      position:absolute;
-      inset:0;
-      background:radial-gradient(60% 50% at 50% 0%, rgba(16,185,129,.18), transparent 60%);
-      z-index:0;
-      pointer-events:none;
-    }
-    .logo{height:80px;width:auto;border-radius:6px;background:var(--brand);display:inline-flex;align-items:center;justify-content:center;padding:2px}
-    .logo img{width:100%;height:100%;object-fit:contain}
-    .tag{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #2a2a2a;background:#0c0c0c;border-radius:999px;padding:.35rem .7rem;color:#d4d4d8;font-size:.85rem}
-    .highlight{color:#34d399}
-
-    /* NAV LINKS */
     .nav-inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
       padding:.9rem 1rem;
     }
-    .nav-left{
-      display:flex;
-      align-items:center;
-      gap:.6rem;
-    }
     .nav-brand{
       display:flex;
       align-items:center;
       gap:.5rem;
-      text-decoration:none;
       font-weight:700;
     }
     .nav-links{
       display:flex;
-      align-items:center;
       gap:1rem;
       font-size:.9rem;
     }
     .nav-links a{
       color:var(--muted);
-      text-decoration:none;
       padding:.25rem .7rem;
       border-radius:.6rem;
     }
+    .nav-links a.active,
     .nav-links a:hover{
       color:var(--text);
       background:#111827;
     }
-    .nav-links a.active{
-      color:var(--text);
-      background:#111827;
-    }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 12px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb {
-      background: #2a2a2a;
-      border-radius: 6px;
-      border: 2px solid var(--bg);
-    }
-    ::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
-    * { scrollbar-width: thin; scrollbar-color: #2a2a2a var(--bg); }
+    /* UI */
+    .row{display:grid;gap:1rem}
+    @media(min-width:768px){.row-2{grid-template-columns:1.2fr 1fr}}
 
-    /* Comparison section */
-    .comparison-grid{
-      display:grid;
-      gap:1rem;
-      margin-top:1.5rem;
-    }
-    @media(min-width:768px){
-      .comparison-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-    }
-    .comparison-title{
+    .btn{
+      display:inline-block;
+      padding:.7rem 1.05rem;
+      border-radius:.8rem;
       font-weight:700;
-      margin-bottom:.35rem;
+      cursor:pointer;
+    }
+    .btn-brand{
+      background:var(--brand);
+      color:#0a0a0a;
     }
 
-    /* OLD badge stayed for Free card */
-    .comparison-badge{
+    .card{
+      background:rgba(18,18,18,.92);
+      border:1px solid var(--line);
+      border-radius:1rem;
+      padding:1.1rem;
+    }
+
+    .h1{font-size:clamp(2rem,4vw,2.6rem);line-height:1.15}
+    .h2{font-size:1.45rem;font-weight:800}
+    .muted{color:var(--muted)}
+    .highlight{color:#34d399}
+
+    /* Pills */
+    .pill{
       display:inline-flex;
       align-items:center;
       gap:.35rem;
-      font-size:.75rem;
-      padding:.2rem .55rem;
+      padding:.22rem .6rem;
       border-radius:999px;
-      border:1px solid #22c55e33;
-      background:#052e16;
-      color:#bbf7d0;
+      font-size:.75rem;
+      font-weight:700;
+      letter-spacing:.04em;
       text-transform:uppercase;
-      letter-spacing:.06em;
-      flex-wrap:wrap;
+      border:1px solid rgba(148,163,184,.25);
+      background:rgba(148,163,184,.08);
+      color:#d1d5db;
     }
 
-    /* ✅ NEW: Premium pill (clean, not neon green) */
-    .premium-pill{
-      display:inline-flex;
-      align-items:center;
-      gap:.45rem;
-      padding:.28rem .65rem;
-      border-radius:999px;
-      border:1px solid rgba(16,185,129,.35);
+    .pill-premium{
+      border-color:rgba(16,185,129,.35);
       background:rgba(16,185,129,.10);
       color:#c7f9e6;
-      font-size:.78rem;
+    }
+
+    .pill-xmas{
+      border-color:rgba(16,185,129,.25);
+      background:rgba(16,185,129,.06);
+      color:#a7f3d0;
       font-weight:800;
       letter-spacing:.02em;
-      flex-wrap:wrap;
+      text-transform:none;
     }
 
-    .comparison-list{
-      margin:.4rem 0 0;
-      padding-left:1.1rem;
-      font-size:.9rem;
-      line-height:1.6;
-      color:var(--muted);
-    }
-
-    /* ===== Snow canvas overlay ===== */
-    #snowCanvas{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      pointer-events:none;
-      opacity:.95;
-    }
-    @media (prefers-reduced-motion: reduce){
-      #snowCanvas{ display:none; }
-    }
-
-    /* ===== Christmas deal styling (kept, but used cleaner) ===== */
-    .sale-price{
-      display:inline-flex;
-      align-items:baseline;
+    /* Pricing */
+    .price-row{
+      margin-top:.45rem;
+      display:flex;
       gap:.5rem;
       flex-wrap:wrap;
+      font-weight:900;
     }
     .old-price{
-      color:#9ca3af;
       text-decoration:line-through;
-      text-decoration-thickness:2px;
-      opacity:.9;
-      font-weight:800;
-      white-space:nowrap;
+      color:#9ca3af;
     }
     .new-price{
       color:#34d399;
-      font-weight:900;
-      text-shadow:0 0 18px rgba(16,185,129,.25);
-      white-space:nowrap;
-    }
-    .price-row{
-      margin-top:.55rem;
-      font-size:.95rem;
-      display:flex;
-      align-items:baseline;
-      gap:.5rem;
-      flex-wrap:wrap;
     }
     .deal-note{
-      margin-top:.35rem;
       font-size:.85rem;
       color:#9ca3af;
-      line-height:1.35;
+      margin-top:.25rem;
+    }
+
+    /* Snow */
+    #snowCanvas{
+      position:fixed;
+      inset:0;
+      z-index:5;
+      pointer-events:none;
+      opacity:.28;
+    }
+    @media(prefers-reduced-motion:reduce){
+      #snowCanvas{display:none;}
+    }
+
+    .footer{
+      border-top:1px solid #1a1a1a;
+      background:rgba(10,10,10,.85);
+      margin-top:60px;
     }
   </style>
 </head>
-<body>
-  <canvas id="snowCanvas" aria-hidden="true"></canvas>
 
-  <!-- NAV -->
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="nav-left">
-        <a href="../" class="nav-brand">
-          <img src="../logo.png" alt="Logo" class="logo" />
-          <span>JHTradingLLC</span>
+<body>
+<canvas id="snowCanvas"></canvas>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="nav-brand" href="../">
+      <img src="../logo.png" class="logo" alt="logo" height="40">
+      <span>JHTradingLLC</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../">Mentorship</a>
+      <a href="../products/">Products</a>
+      <a class="active" href="./">Free Discord</a>
+    </nav>
+  </div>
+</header>
+
+<section>
+  <div class="container" style="padding:80px 1rem 40px;">
+    <div class="row row-2">
+      <div>
+        <span class="pill">Free</span>
+        <h1 class="h1">
+          Join the <span class="highlight">free Optimal Trading Empire Discord</span>
+        </h1>
+        <p class="muted">
+          Get access to public channels, discussions and announcements.
+        </p>
+        <a class="btn btn-brand" href="https://discord.gg/bq9uyrW7Pa" target="_blank">
+          Join the free Discord
         </a>
       </div>
-      <nav class="nav-links">
-        <a href="../">Mentorship</a>
-        <a href="../products/">Products</a>
-        <a href="./" class="active">Free Discord</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- HERO -->
-  <section style="position:relative; overflow:hidden;">
-    <div class="hero-bg"></div>
-    <div class="container" style="padding:80px 1rem 50px; position:relative; z-index:1;">
-      <div class="row row-2" style="align-items:center;">
-        <div>
-          <span class="tag">Free community</span>
-          <h1 class="h1">
-            Join the <span class="highlight">free Optimal Trading Empire Discord</span> and start learning with others.
-          </h1>
-
-          <p class="muted" style="max-width:60ch">
-            Get access to public channels, trade discussions and announcements, and see if my style of teaching and trading
-            resonates with you before ever joining the mentorship.
-          </p>
-
-          <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;">
-            <a
-              class="btn btn-brand"
-              href="https://discord.gg/bq9uyrW7Pa"
-              target="_blank"
-              rel="noopener"
-            >
-              Join the free Discord
-            </a>
-            <span class="muted" style="font-size:.85rem;">
-              No payment, no card required, just your Discord account.
-            </span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="h2" style="margin-bottom:.35rem;">What you’ll find inside</div>
-          <ul class="muted" style="font-size:.9rem;line-height:1.7;margin:0;padding-left:1.2rem;">
-            <li>Public chat channels to talk setups & market conditions</li>
-            <li>Announcements for livestreams, new content and updates</li>
-            <li>Occasional trade recaps and screenshots</li>
-            <li>Space to ask questions and learn from others on the same path</li>
-          </ul>
-          <p class="muted" style="font-size:.8rem;margin-top:.75rem;">
-            The Discord is the free front door to the ecosystem. The mentorship is where we go deep, 1-on-1.
-          </p>
-        </div>
+      <div class="card">
+        <h2 class="h2">What you’ll find inside</h2>
+        <ul class="muted">
+          <li>Public chat channels</li>
+          <li>Trade discussions</li>
+          <li>Livestream announcements</li>
+          <li>Community learning</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FREE vs MENTORSHIP -->
-  <section style="border-top:1px solid #1a1a1a;">
-    <div class="container" style="padding:50px 1rem 70px;">
-      <h2 class="h2">Free vs Mentorship</h2>
-      <p class="muted" style="max-width:70ch;">
-        Here’s a quick breakdown of what you get for free in the Discord versus what’s included when you join the
-        1-on-1 Trading Mentorship.
-      </p>
+<section style="border-top:1px solid #1a1a1a;">
+  <div class="container" style="padding:50px 1rem;">
+    <h2 class="h2">Free vs Mentorship</h2>
 
-      <div class="comparison-grid">
-        <!-- Free card -->
-        <div class="card">
-          <div class="comparison-title">
-            Free Discord Community
-          </div>
-          <div class="comparison-badge">
-            <span>Free</span>
-          </div>
-          <ul class="comparison-list">
-            <li>Access to public text channels</li>
-            <li>Community discussions and trade talk</li>
-            <li>Announcements about content & livestreams</li>
-            <li>Occasional screenshots and general tips</li>
-            <li>Great to get familiar with my style and the community</li>
-          </ul>
+    <div class="row row-2" style="margin-top:1.5rem;">
+      <div class="card">
+        <span class="pill">Free</span>
+        <ul class="muted">
+          <li>Public channels</li>
+          <li>Community discussion</li>
+          <li>General guidance</li>
+        </ul>
+      </div>
+
+      <div class="card" style="border-color:var(--brand);">
+        <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
+          <span class="pill pill-premium">Premium</span>
+          <span class="pill pill-xmas">🎄 Christmas Deal · first month only</span>
         </div>
 
-        <!-- Mentorship card -->
-        <div class="card" style="border-color:var(--brand);">
-          <div class="comparison-title">
-            1-on-1 Trading Mentorship
-          </div>
-
-          <!-- ✅ FIXED: clean premium header (no neon-green block) -->
-          <div class="premium-pill">
-            <span>Premium</span>
-            <span>🎄 Christmas Deal</span>
-            <span>(first month only)</span>
-          </div>
-
-          <!-- Price is now BELOW the pill (clean) -->
-          <div class="price-row">
-            <span class="muted">From</span>
-            <span class="old-price">$350</span>
-            <span class="new-price">$250</span>
-            <span class="muted">/ month</span>
-          </div>
-          <div class="deal-note">
-            Deal applies to the <strong>first month only</strong>. After month 1, the monthly price returns to <span class="old-price">$350</span>.
-          </div>
-
-          <ul class="comparison-list" style="margin-top:.55rem;">
-            <li>Weekly 30-min <strong>1-on-1 call</strong> focused on you</li>
-            <li><strong>NY lunch livestreams</strong> Mon–Fri (~1:30–3:00 PM)</li>
-            <li>Weekly private group call + tests & accountability</li>
-            <li>Custom <strong>0–100 risk management plan</strong></li>
-            <li>24/7 high-priority DM access for breakdowns & questions</li>
-            <li>Access to <strong>JH-Trading's OTE Zones indicator</strong> while active</li>
-            <li>Structured path from where you are now to where you want to be</li>
-          </ul>
-
-          <p class="muted" style="font-size:.85rem;margin-top:.75rem;">
-            When you’re ready to take the next step, you can apply directly via the
-            <a href="../" style="text-decoration:underline;">mentorship page</a>.
-          </p>
+        <div class="price-row">
+          <span>From</span>
+          <span class="old-price">$350</span>
+          <span class="new-price">$250</span>
+          <span>/ month</span>
         </div>
+
+        <div class="deal-note">
+          After month 1, price returns to <span class="old-price">$350</span>.
+        </div>
+
+        <ul class="muted" style="margin-top:.6rem;">
+          <li>Weekly 1-on-1 call</li>
+          <li>NY lunch livestreams</li>
+          <li>Risk management plan</li>
+          <li>Priority DM access</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container" style="padding:20px 1rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;justify-content:center;color:#9ca3af;font-size:.9rem">
-      <div>© <span id="y"></span> JHTradingLLC All rights reserved.</div>
-    </div>
-  </footer>
+<footer class="footer">
+  <div class="container" style="padding:20px;text-align:center;color:#9ca3af;">
+    © <span id="y"></span> JHTradingLLC
+  </div>
+</footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
 
-  <script>
-    // ===== Snowfall (canvas) =====
-    (function () {
-      var canvas = document.getElementById("snowCanvas");
-      if (!canvas) return;
-
-      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce) return;
-
-      var ctx = canvas.getContext("2d");
-      var w = 0, h = 0;
-      var flakes = [];
-      var MAX_FLAKES = 140;
-
-      function resize(){
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-      }
-      window.addEventListener("resize", resize, { passive:true });
-      resize();
-
-      function rand(min, max){ return Math.random() * (max - min) + min; }
-
-      function makeFlake(){
-        return {
-          x: rand(0, w),
-          y: rand(-h, 0),
-          r: rand(0.8, 2.4),
-          s: rand(0.6, 1.6),
-          dx: rand(-0.4, 0.4),
-          a: rand(0.35, 0.9)
-        };
-      }
-
-      for (var i = 0; i < MAX_FLAKES; i++) flakes.push(makeFlake());
-
-      function step(){
-        ctx.clearRect(0, 0, w, h);
-
-        for (var i = 0; i < flakes.length; i++){
-          var f = flakes[i];
-
-          ctx.beginPath();
-          ctx.globalAlpha = f.a;
-          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-          ctx.fillStyle = "#ffffff";
-          ctx.fill();
-
-          f.y += f.s;
-          f.x += f.dx;
-
-          f.dx += rand(-0.03, 0.03);
-          if (f.dx > 0.7) f.dx = 0.7;
-          if (f.dx < -0.7) f.dx = -0.7;
-
-          if (f.y - f.r > h){
-            flakes[i] = makeFlake();
-            flakes[i].y = rand(-40, -10);
-          }
-          if (f.x < -10) f.x = w + 10;
-          if (f.x > w + 10) f.x = -10;
-        }
-
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(step);
-      }
-
-      step();
+  (function(){
+    const c=document.getElementById("snowCanvas");
+    if(!c) return;
+    const ctx=c.getContext("2d");
+    let w,h,flakes=[];
+    const N=90;
+    function r(a,b){return Math.random()*(b-a)+a}
+    function resize(){w=c.width=innerWidth;h=c.height=innerHeight}
+    addEventListener("resize",resize);resize();
+    function f(){return{x:r(0,w),y:r(-h,0),r:r(.7,2),s:r(.4,1),dx:r(-.3,.3),a:r(.25,.6)}}
+    for(let i=0;i<N;i++)flakes.push(f());
+    (function draw(){
+      ctx.clearRect(0,0,w,h);
+      flakes.forEach(e=>{
+        ctx.globalAlpha=e.a;
+        ctx.beginPath();
+        ctx.arc(e.x,e.y,e.r,0,Math.PI*2);
+        ctx.fillStyle="#fff";
+        ctx.fill();
+        e.y+=e.s;e.x+=e.dx;
+        if(e.y>h)e.y=-10;
+      });
+      requestAnimationFrame(draw);
     })();
-  </script>
+  })();
+</script>
 </body>
 </html>
