@@ -12,24 +12,34 @@
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>1-on-1 Trading Mentorship – JHTradingLLC</title>
-  <link rel="icon" type="image/png" href="logo_website.png" />
-    
+  <title>Free Discord Community – JHTradingLLC</title>
+  <link rel="icon" type="image/png" href="../logo_website.png" />
+
   <style>
-    :root { --bg:#0a0a0a; --card:#121212; --muted:#a1a1aa; --line:#2a2a2a; --brand:#10b981; --text:#e5e7eb; }
+    :root { --bg:#0a0a0a; --card:#121212; --muted:#a1a1aa; --line:#1f2937; --brand:#10b981; --text:#e5e7eb; }
     *{box-sizing:border-box;scroll-behavior:smooth;}
     body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,"Helvetica Neue",Arial,"Noto Sans",sans-serif}
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 1rem}
     .nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(6px);border-bottom:1px solid #1f2937;background:rgba(10,10,10,.82)}
     .row{display:grid;gap:1rem}
-    @media(min-width:768px){.row-2{grid-template-columns:1fr 1fr}.row-3{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:768px){.row-2{grid-template-columns:1.2fr 1fr}}
+
     .btn{display:inline-block;padding:.7rem 1.05rem;border-radius:.8rem;font-weight:700;text-align:center;cursor:pointer}
     .btn-brand{background:var(--brand);color:#0a0a0a}
     .btn-brand:hover{filter:brightness(1.08);}
+    .btn-ghost{
+      background:transparent;
+      border:1px solid var(--line);
+      color:var(--muted);
+      padding:.6rem 1rem;
+      border-radius:.8rem;
+      font-weight:600;
+      cursor:pointer;
+    }
     .card{background:rgba(18,18,18,.9);border:1px solid var(--line);border-radius:1rem;padding:1.1rem}
     .muted{color:var(--muted)}
-    .h1{font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin:.25rem 0 .75rem}
+    .h1{font-size:clamp(2rem,4vw,2.6rem);line-height:1.15;margin:.25rem 0 .75rem}
     .h2{font-size:1.45rem;font-weight:800;margin:0 0 .5rem}
     .footer{border-top:1px solid #1a1a1a;background:rgba(10,10,10,.85)}
     .hero-bg{
@@ -43,9 +53,8 @@
     .logo img{width:100%;height:100%;object-fit:contain}
     .tag{display:inline-flex;align-items:center;gap:.4rem;border:1px solid #2a2a2a;background:#0c0c0c;border-radius:999px;padding:.35rem .7rem;color:#d4d4d8;font-size:.85rem}
     .highlight{color:#34d399}
-    .notice{background:#0d1f1a;border:1px solid #1f3c32}
-    
-    /* NAV LINKS – unified across all pages */
+
+    /* NAV LINKS – unified */
     .nav-inner{
       display:flex;
       align-items:center;
@@ -96,7 +105,54 @@
     ::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
     * { scrollbar-width: thin; scrollbar-color: #2a2a2a var(--bg); }
 
-    /* ===== Snow canvas overlay ===== */
+    /* Comparison section */
+    .comparison-grid{
+      display:grid;
+      gap:1rem;
+      margin-top:1.5rem;
+    }
+    @media(min-width:768px){
+      .comparison-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+    .comparison-title{
+      font-weight:700;
+      margin-bottom:.35rem;
+    }
+    .comparison-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:.35rem;
+      font-size:.75rem;
+      padding:.2rem .55rem;
+      border-radius:999px;
+      border:1px solid #22c55e33;
+      background:#052e16;
+      color:#bbf7d0;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    /* ✅ Only added for the 2nd pill (Christmas) */
+    .comparison-badge-christmas{
+      border:1px solid rgba(16,185,129,.35);
+      background:rgba(16,185,129,.12);
+      color:#c7f9e6;
+      text-transform:none;
+      letter-spacing:.02em;
+      font-weight:700;
+    }
+
+    .comparison-list{
+      margin:.4rem 0 0;
+      padding-left:1.1rem;
+      font-size:.9rem;
+      line-height:1.6;
+      color:var(--muted);
+    }
+
+    /* ===== Snow canvas overlay (same as other pages) ===== */
     #snowCanvas{
       position:fixed;
       inset:0;
@@ -107,47 +163,6 @@
     @media (prefers-reduced-motion: reduce){
       #snowCanvas{ display:none; }
     }
-
-    /* ===== Christmas sale price styling ===== */
-    .sale-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:.35rem;
-      font-size:.75rem;
-      padding:.25rem .6rem;
-      border-radius:999px;
-      border:1px solid rgba(239,68,68,.35);
-      background:rgba(239,68,68,.12);
-      color:#fecaca;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      font-weight:800;
-    }
-    .sale-note{
-      color:#9ca3af;
-      font-size:.85rem;
-      margin-top:.4rem;
-    }
-    .sale-price{
-      display:inline-flex;
-      align-items:baseline;
-      gap:.6rem;
-      flex-wrap:wrap;
-    }
-    .old-price{
-      color:#9ca3af;
-      text-decoration:line-through;
-      text-decoration-thickness:2px;
-      opacity:.9;
-      font-weight:800;
-      white-space:nowrap;
-    }
-    .new-price{
-      color:#34d399;
-      font-weight:900;
-      text-shadow:0 0 18px rgba(16,185,129,.25);
-      white-space:nowrap;
-    }
   </style>
 </head>
 <body>
@@ -157,15 +172,15 @@
   <header class="nav">
     <div class="container nav-inner">
       <div class="nav-left">
-        <a href="./" class="nav-brand">
-          <img src="logo.png" alt="Logo" class="logo" />
+        <a href="../" class="nav-brand">
+          <img src="../logo.png" alt="Logo" class="logo" />
           <span>JHTradingLLC</span>
         </a>
       </div>
       <nav class="nav-links">
-        <a href="./" class="active">Mentorship</a>
-        <a href="products/">Products</a>
-        <a href="freeSection/">Free Discord</a>
+        <a href="../">Mentorship</a>
+        <a href="../products/">Products</a>
+        <a href="./" class="active">Free Discord</a>
       </nav>
     </div>
   </header>
@@ -173,216 +188,108 @@
   <!-- HERO -->
   <section style="position:relative; overflow:hidden;">
     <div class="hero-bg"></div>
-    <div class="container" style="padding:80px 1rem; position:relative; z-index:1;">
+    <div class="container" style="padding:80px 1rem 50px; position:relative; z-index:1;">
       <div class="row row-2" style="align-items:center;">
         <div>
-          <span class="tag">Personalized mentorship</span>
+          <span class="tag">Free community</span>
           <h1 class="h1">
-            I’m super excited to finally share what you’ll get when joining my 
-            <span class="highlight">1-on-1 trading mentorship</span>!
+            Join the <span class="highlight">free Optimal Trading Empire Discord</span> and start learning with others.
           </h1>
 
-          <p class="muted" style="max-width:65ch">
-            Let’s see what we can accomplish together.
+          <p class="muted" style="max-width:60ch">
+            Get access to public channels, trade discussions and announcements, and see if my style of teaching and trading
+            resonates with you before ever joining the mentorship.
           </p>
 
-          <div style="margin-top:1rem;">
-            <a class="btn btn-brand" href="#pricing">Apply now</a>
-          </div>
-
-          <div class="muted" style="margin-top:.5rem; font-size:.85rem;">
-            Spots are limited. 
-            <strong class="highlight" id="dynamicSpots">
-              Only a limited number of spots available!
-            </strong>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="muted" style="font-size:.95rem">What we focus on</div>
-          <div class="row row-2" style="margin-top:.6rem">
-            <div class="card" style="background:none;border:none;padding:0">
-              <div class="muted" style="font-size:.85rem">1:1 call weekly</div>
-              <div>30-min deep-dive on your topics</div>
-            </div>
-            <div class="card" style="background:none;border:none;padding:0">
-              <div class="muted" style="font-size:.85rem">Personal guide</div>
-              <div>My full concept adapted to you</div>
-            </div>
-            <div class="card" style="background:none;border:none;padding:0">
-              <div class="muted" style="font-size:.85rem">Group accountability</div>
-              <div>Weekly private call + tests</div>
-            </div>
-            <div class="card" style="background:none;border:none;padding:0">
-              <div class="muted" style="font-size:.85rem">Risk plan (0–100)</div>
-              <div>Dial-in size, profits & payouts</div>
-            </div>
-            <div class="card" style="background:none;border:none;padding:0">
-              <div class="muted" style="font-size:.85rem">NY lunch livestreams</div>
-              <div>Mon–Fri, 1:30 PM – 3:00 PM – live market work</div>
-            </div>
-            <div class="card" style="background:none;border:none;padding:0">
-              <div class="muted" style="font-size:.85rem">Priority DM</div>
-              <div>24/7 high-priority access</div>
-            </div>
+          <!-- Discord button (you can add UTM if you want: ?utm_source=website&utm_medium=button&utm_campaign=free_discord) -->
+          <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:.65rem;align-items:center;">
+            <a
+              class="btn btn-brand"
+              href="https://discord.gg/bq9uyrW7Pa"
+              target="_blank"
+              rel="noopener"
+            >
+              Join the free Discord
+            </a>
+            <span class="muted" style="font-size:.85rem;">
+              No payment, no card required, just your Discord account.
+            </span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INCLUDED -->
-  <section id="included" style="border-top:1px solid #1a1a1a">
-    <div class="container" style="padding:50px 1rem">
-      <h2 class="h2">What’s Included</h2>
-      <div class="row row-2" style="margin-top:1rem">
-        <div class="card">
-          <div class="h3">Weekly 1-on-1 Call (30 min)</div>
-          <p class="muted">Tailored to the topics of your choice, with clear steps for improvement each week.</p>
-        </div>
 
         <div class="card">
-          <div class="h3">Personalized Concept Guide</div>
-          <p class="muted">A custom guide built around your background and experience in trading.</p>
-        </div>
-
-        <div class="card">
-          <div class="h3">Weekly Group Call & Progress Tests</div>
-          <p class="muted">Private group call each week with tests to track your growth and performance.</p>
-        </div>
-
-        <div class="card">
-          <div class="h3">Custom Risk Management Plan (0–100)</div>
-          <p class="muted">Designed to help you scale safely and aim for higher consistency and payouts.</p>
-        </div>
-
-        <div class="card">
-          <div class="h3">NY Lunch Livestreams (Mon–Fri)</div>
-          <p class="muted">
-            Live trading sessions during the lunch session, Monday to Friday, roughly <strong>1:30 PM – 3:00 PM</strong>.
-            Watch execution, reasoning and management in real time.
-          </p>
-          <p class="muted" style="font-size:.9rem;margin-top:.4rem;">
-            Time update: <strong>1pm EST</strong> (instead of 12pm EST) when referenced.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="h3">24/7 DM Access</div>
-          <p class="muted">Ask anything, anytime — I’ll respond as fast as I can with actionable advice.</p>
-        </div>
-
-        <div class="card">
-          <div class="h3">JH-Trading's OTE Indicator</div>
-          <p class="muted">
-            Access to my JH-Trading OTE Zones indicator is included for active mentorship clients at no extra cost.
+          <div class="h2" style="margin-bottom:.35rem;">What you’ll find inside</div>
+          <ul class="muted" style="font-size:.9rem;line-height:1.7;margin:0;padding-left:1.2rem;">
+            <li>Public chat channels to talk setups & market conditions</li>
+            <li>Announcements for livestreams, new content and updates</li>
+            <li>Occasional trade recaps and screenshots</li>
+            <li>Space to ask questions and learn from others on the same path</li>
+          </ul>
+          <p class="muted" style="font-size:.8rem;margin-top:.75rem;">
+            The Discord is the free front door to the ecosystem. The mentorship is where we go deep, 1-on-1.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing" style="border-top:1px solid #1a1a1a">
-    <div class="container" style="padding:50px 1rem">
-      <h2 class="h2">Pricing</h2>
-      <p class="muted" style="max-width:65ch">
-        Choose the commitment that fits you best. All plans include everything above.
+  <!-- FREE vs MENTORSHIP COMPARISON -->
+  <section style="border-top:1px solid #1a1a1a;">
+    <div class="container" style="padding:50px 1rem 70px;">
+      <h2 class="h2">Free vs Mentorship</h2>
+      <p class="muted" style="max-width:70ch;">
+        Here’s a quick breakdown of what you get for free in the Discord versus what’s included when you join the
+        1-on-1 Trading Mentorship.
       </p>
 
-      <div class="card" style="border-color:var(--brand)">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">
-          <div style="font-weight:700">Mentorship plans</div>
-          <div class="sale-badge">🎄 Christmas Deal</div>
+      <div class="comparison-grid">
+        <!-- Free card -->
+        <div class="card">
+          <div class="comparison-title">
+            Free Discord Community
+          </div>
+          <div class="comparison-badge">
+            <span>Free</span>
+          </div>
+          <ul class="comparison-list">
+            <li>Access to public text channels</li>
+            <li>Community discussions and trade talk</li>
+            <li>Announcements about content & livestreams</li>
+            <li>Occasional screenshots and general tips</li>
+            <li>Great to get familiar with my style and the community</li>
+          </ul>
         </div>
 
-        <div style="font-size:2.1rem;margin-top:.25rem;font-weight:700;">
-          <span class="sale-price">
-            <span>From</span>
-            <span class="old-price">$350</span>
-            <span class="new-price">$250</span>
-            <span>/ month</span>
-          </span>
+        <!-- Mentorship card -->
+        <div class="card" style="border-color:var(--brand);">
+          <div class="comparison-title">
+            1-on-1 Trading Mentorship
+          </div>
+
+          <!-- ✅ two pills next to each other -->
+          <div style="display:flex;gap:.4rem;flex-wrap:wrap;">
+            <div class="comparison-badge">
+              <span>Premium</span>
+            </div>
+            <div class="comparison-badge comparison-badge-christmas">
+              <span>🎄 Christmas Deal · first month only</span>
+            </div>
+          </div>
+
+          <ul class="comparison-list">
+            <li>Weekly 30-min <strong>1-on-1 call</strong> focused on you</li>
+            <li><strong>NY PM livestreams</strong> Mon–Fri (~1:30–3:00 PM)</li>
+            <li>Weekly private group call + tests & accountability</li>
+            <li>Custom <strong>0–100 risk management plan</strong></li>
+            <li>24/7 high-priority DM access for breakdowns & questions</li>
+            <li>Access to <strong>JH-Trading's OTE Zones indicator</strong> while active</li>
+            <li>Structured path from where you are now to where you want to be</li>
+          </ul>
+          <p class="muted" style="font-size:.85rem;margin-top:.75rem;">
+            When you’re ready to take the next step, you can apply directly via the
+            <a href="../" style="text-decoration:underline;">mentorship page</a>.
+          </p>
         </div>
-
-        <div class="sale-note">
-          Christmas Deal applies to the <strong>first month only</strong>. After month 1, the monthly price returns to <span>$350</span>.
-        </div>
-
-        <ul class="muted" style="font-size:.95rem;line-height:1.6;margin-top:.6rem;">
-          <li>
-            <strong>
-              <span class="old-price">$350.00</span>
-              <span class="new-price">$250.00</span>
-              / month
-            </strong>
-            – first month only (Christmas Deal), then $350.00/month. Cancel anytime.
-          </li>
-          <li><strong>$900.00 / 3 months</strong> – commit for 3 months and save on the monthly rate</li>
-          <li><strong>$1,750.00 / 6 months</strong> – best value: $350 off (= 1 month free!)</li>
-        </ul>
-
-        <p class="muted" style="font-size:.9rem;margin-top:.5rem;">
-          All options include weekly 1-on-1 calls, group accountability, NY lunch livestreams, a 0–100 risk plan and priority DM access.
-        </p>
-
-        <a class="btn btn-brand"
-           href="https://whop.com/jhtrading/1on1-mentorship-copy-fe/"
-           target="_blank" rel="noopener">Start monthly</a>
-      
-        <div style="margin-top:.75rem;">
-          <a href="#disclaimer" 
-             style="font-style:italic; text-decoration:underline; color:var(--muted); font-size:.9rem;">
-             Read disclaimer
-          </a>
-        </div>
-      </div>
-
-      <div id="availability" class="card notice" style="margin-top:1rem">
-        <strong>Limited availability:</strong>
-        <span id="availabilityText">Only a limited number of spots available!</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- DISCLAIMER -->
-  <section id="disclaimer" style="border-top:1px solid #1a1a1a;">
-    <div class="container" style="padding:60px 1rem;">
-      <h2 class="h2">Disclaimer</h2>
-      <p class="muted" style="max-width:75ch;">
-        By purchasing and participating in this mentorship program, you acknowledge and agree to the following:
-      </p>
-
-      <div class="card" style="margin-top:1rem; line-height:1.7;">
-        <p class="muted">
-          <strong>No Guarantees of Results:</strong>
-          The mentor does not guarantee any specific results, financial outcomes, or success.
-          Your results depend on your own effort, commitment, and circumstances.
-        </p>
-
-        <br>
-
-        <p class="muted">
-          <strong>Educational Purposes Only:</strong>
-          All information, strategies, and guidance provided during the mentorship are for educational and informational purposes only.
-          Nothing shared should be interpreted as professional, financial, legal, medical, or psychological advice.
-        </p>
-
-        <br>
-
-        <p class="muted">
-          <strong>Personal Responsibility:</strong>
-          You are solely responsible for the decisions, actions, and results that come from your participation.
-          The mentor is not liable for any damages, losses, or consequences resulting from the application of information provided.
-        </p>
-
-        <br>
-
-        <p class="muted">
-          <strong>No Professional Relationship:</strong>
-          Participation in this mentorship does not create a client–professional relationship
-          (e.g., financial advisor, therapist, lawyer, etc.). It is a peer-guidance and educational service.
-        </p>
       </div>
     </div>
   </section>
