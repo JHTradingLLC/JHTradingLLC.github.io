@@ -220,64 +220,9 @@
       .modal-img-top{ max-height:160px; }
       .modal-inner{ padding:1.25rem; }
     }
-
-    /* ===== Snow canvas overlay ===== */
-    #snowCanvas{
-      position:fixed;
-      inset:0;
-      z-index:9999;
-      pointer-events:none;
-      opacity:.95;
-    }
-    @media (prefers-reduced-motion: reduce){
-      #snowCanvas{ display:none; }
-    }
-
-    /* ===== Christmas sale price styling ===== */
-    .sale-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:.35rem;
-      font-size:.75rem;
-      padding:.25rem .6rem;
-      border-radius:999px;
-      border:1px solid rgba(239,68,68,.35);
-      background:rgba(239,68,68,.12);
-      color:#fecaca;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      font-weight:800;
-    }
-    .sale-note{
-      color:#9ca3af;
-      font-size:.8rem;
-      margin-top:.25rem;
-    }
-    .sale-price{
-      display:inline-flex;
-      align-items:baseline;
-      gap:.55rem;
-      flex-wrap:wrap;
-    }
-    .old-price{
-      color:#9ca3af;
-      text-decoration:line-through;
-      text-decoration-thickness:2px;
-      opacity:.9;
-      font-weight:800;
-      white-space:nowrap;
-    }
-    .new-price{
-      color:#34d399;
-      font-weight:900;
-      text-shadow:0 0 18px rgba(16,185,129,.25);
-      white-space:nowrap;
-    }
   </style>
 </head>
 <body>
-  <canvas id="snowCanvas" aria-hidden="true"></canvas>
-
   <!-- NAV -->
   <header class="nav">
     <div class="container nav-inner">
@@ -328,7 +273,6 @@
           <div class="card-body">
             <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
               <div class="product-title">1-on-1 Trading Mentorship</div>
-              <div class="sale-badge">🎄 Christmas Deal</div>
             </div>
 
             <p class="product-desc">
@@ -337,14 +281,7 @@
 
             <div>
               <div class="product-price">
-                <span class="sale-price">
-                  <span class="old-price">$350</span>
-                  <span class="new-price">$250</span>
-                  <span>/ month</span>
-                </span>
-              </div>
-              <div class="sale-note">
-                Christmas Deal applies to the <strong>first month only</strong>, then $350/month.
+                $350 / month
               </div>
               <div class="muted" style="font-size:.8rem;margin-top:.15rem;">
                 Or $900 / 3 months · $1,750 / 6 months.
@@ -483,22 +420,9 @@
         </ul>
 
         <div style="border-top:1px solid #1f2937;padding-top:1rem;margin-top:.75rem;">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap;">
-            <div style="font-weight:600;margin-bottom:.35rem;">Pricing options</div>
-            <div class="sale-badge">🎄 Christmas Deal</div>
-          </div>
-          <div class="sale-note" style="margin:0 0 .6rem 0;">
-            Christmas Deal applies to the <strong>first month only</strong>, then $350/month.
-          </div>
+          <div style="font-weight:600;margin-bottom:.35rem;">Pricing options</div>
           <ul class="muted" style="font-size:.9rem;line-height:1.6;margin:0 0 1rem 1.1rem;">
-            <li>
-              <strong>
-                <span class="old-price">$350.00</span>
-                <span class="new-price">$250.00</span>
-                / month
-              </strong>
-              – first month only (Christmas Deal), then $350.00/month. Cancel anytime.
-            </li>
+            <li><strong>$350.00 / month</strong> – Cancel anytime.</li>
             <li><strong>$900.00 / 3 months</strong> – commit for 3 months and save on the monthly rate</li>
             <li><strong>$1,750.00 / 6 months</strong> – best value: $350 off (= 1 month free!)</li>
           </ul>
@@ -512,7 +436,7 @@
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:flex-end;">
             <button class="btn btn-ghost" onclick="closeModal('mentorshipModal')">Close</button>
             <a class="btn btn-brand"
-               href="https://whop.com/jhtrading/1on1-mentorship-copy-fe/"
+               href="https://whop.com/jhtrading/1on1-mentorship-ad/"
                target="_blank" rel="noopener">
               Go to checkout
             </a>
@@ -642,77 +566,6 @@
         document.body.classList.remove('modal-open');
       }
     });
-  </script>
-
-  <script>
-    // ===== Snowfall (canvas) =====
-    (function () {
-      var canvas = document.getElementById("snowCanvas");
-      if (!canvas) return;
-
-      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce) return;
-
-      var ctx = canvas.getContext("2d");
-      var w = 0, h = 0;
-      var flakes = [];
-      var MAX_FLAKES = 140;
-
-      function resize(){
-        w = canvas.width = window.innerWidth;
-        h = canvas.height = window.innerHeight;
-      }
-      window.addEventListener("resize", resize, { passive:true });
-      resize();
-
-      function rand(min, max){ return Math.random() * (max - min) + min; }
-
-      function makeFlake(){
-        return {
-          x: rand(0, w),
-          y: rand(-h, 0),
-          r: rand(0.8, 2.4),
-          s: rand(0.6, 1.6),
-          dx: rand(-0.4, 0.4),
-          a: rand(0.35, 0.9)
-        };
-      }
-
-      for (var i = 0; i < MAX_FLAKES; i++) flakes.push(makeFlake());
-
-      function step(){
-        ctx.clearRect(0, 0, w, h);
-
-        for (var i = 0; i < flakes.length; i++){
-          var f = flakes[i];
-
-          ctx.beginPath();
-          ctx.globalAlpha = f.a;
-          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-          ctx.fillStyle = "#ffffff";
-          ctx.fill();
-
-          f.y += f.s;
-          f.x += f.dx;
-
-          f.dx += rand(-0.03, 0.03);
-          if (f.dx > 0.7) f.dx = 0.7;
-          if (f.dx < -0.7) f.dx = -0.7;
-
-          if (f.y - f.r > h){
-            flakes[i] = makeFlake();
-            flakes[i].y = rand(-40, -10);
-          }
-          if (f.x < -10) f.x = w + 10;
-          if (f.x > w + 10) f.x = -10;
-        }
-
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(step);
-      }
-
-      step();
-    })();
   </script>
 </body>
 </html>
